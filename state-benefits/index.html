@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Benefits and Allocations - USSR.gov</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%239B1C1C'/><text x='50' y='54' font-size='65' fill='%23D4AF37' dominant-baseline='central' text-anchor='middle'>☭</text></svg>">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        soviet: {
+                            red: '#9B1C1C',
+                            redHover: '#7F1D1D',
+                            gold: '#D4AF37',
+                            goldHover: '#F59E0B',
+                            darkBlue: '#111827',
+                            lightBg: '#F3F4F6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col">
+
+    <!-- Top Official Banner -->
+    <section class="bg-gray-100 border-b border-gray-200 py-1.5 px-4 text-xs">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
+            <div class="flex items-center space-x-2">
+                <span class="text-base">🚩</span>
+                <p class="text-gray-600 font-medium">
+                    <span class="font-bold text-gray-800" data-en="An unofficial website of the Union of Soviet Socialist Republics" data-ru="Неофициальный сайт Союза Советских Социалистических Республик">An unofficial website of the Union of Soviet Socialist Republics</span>.
+                </p>
+                <button onclick="toggleHowToKnow()" class="text-blue-700 hover:text-blue-900 underline flex items-center ml-1 focus:outline-none font-semibold">
+                    <span data-en="Here's how you know" data-ru="Как это проверить">Here's how you know</span>
+                    <i class="fas fa-chevron-down ml-1 text-[10px] transition-transform duration-200" id="chevron-how"></i>
+                </button>
+            </div>
+            <div class="flex items-center space-x-2 text-gray-500">
+                <i class="fa-brands fa-discord text-indigo-500"></i>
+                <span data-en="Discord Mock Government Project" data-ru="Проект Дискорд Правительства">Discord Mock Government Project</span>
+            </div>
+        </div>
+
+        <!-- Explanatory Dropdown -->
+        <div id="how-to-know-box" class="hidden max-w-7xl mx-auto mt-3 grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-white border border-gray-200 rounded-lg shadow-inner">
+            <div class="flex items-start space-x-3">
+                <div class="bg-red-100 p-2 rounded-full text-soviet-red">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-800 text-sm" data-en="Official project resources are linked from USSR.gov" data-ru="Официальные ресурсы проекта связаны с USSR.gov">Official project resources are linked from USSR.gov</h4>
+                    <p class="text-gray-600 mt-1 text-xs leading-relaxed" data-en="This portal serves as the central hub for the USSR Discord Mock Government. Official ministries, departments, and community services are always linked directly from this website or the project's verified Discord server." data-ru="Этот портал служит центральным хабом Имитационного Правительства СССР в Discord. Официальные министерства, ведомства и общественные службы всегда отображаются напрямую с этого сайта или верифицированного сервера Discord проекта.">This portal serves as the central hub for the USSR Discord Mock Government. Official ministries, departments, and community services are always linked directly from this website or the project's verified Discord server.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-3">
+                <div class="bg-red-100 p-2 rounded-full text-soviet-red">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-800 text-sm" data-en="Secure connections run through our Discord hierarchy" data-ru="Безопасные соединения проходят через иерархию Дискорда">Secure connections run through our Discord hierarchy</h4>
+                    <p class="text-gray-600 mt-1" data-en="The lock icon or safe links ensure you are communicating directly with registered State ministers." data-ru="Значок замка или надежные ссылки гарантируют, что вы общаетесь напрямую с зарегистрированными государственными министрами.">The lock icon or safe links ensure you are communicating directly with registered State ministers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Header -->
+    <header class="bg-white border-b border-gray-200 py-4 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <!-- Left: Logo & Title -->
+            <a href="/main/" class="flex items-center space-x-4 group cursor-pointer" title="Return to USSR.gov Main Portal">
+                <div class="bg-soviet-red group-hover:bg-red-700 transition-all p-3 rounded-full shadow-lg flex items-center justify-center w-14 h-14 border-2 border-soviet-gold">
+                    <svg class="w-8 h-8 text-soviet-gold fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15.5l-2.5-1.5-2.5 1.5.7-2.9-2.2-1.9 3-.3 1.3-2.8 1.3 2.8 3 .3-2.2 1.9.7 2.9zm.68-6.1c-.24-.22-.55-.38-.93-.45-.3-.05-.62-.05-.93.02l-.63-.63c.69-.53 1.57-.75 2.45-.58.74.14 1.4.52 1.86 1.08l-1.82.56zm-1.89.96c-.46-.3-.79-.75-.92-1.28l1.83-.56c.07.25.21.46.42.61l-1.33 1.23zm-.74 1.35c-.17-.11-.32-.24-.46-.38l.63-.63c.12.11.24.21.38.28l-.55.73zm4.56-4.56l-5.61 5.61c-.53.53-1.23.82-1.98.82-.75 0-1.45-.29-1.98-.82s-.82-1.23-.82-1.98c0-.75.29-1.45.82-1.98l5.61-5.61 3.96 3.96z"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-1">
+                        <span class="font-serif text-3xl font-bold tracking-tight text-soviet-red group-hover:text-red-700 transition-colors">ussr</span>
+                        <span class="font-sans text-3xl font-light tracking-tight text-gray-700">.gov</span>
+                    </div>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold" data-en="The Union's Official Mock Portal" data-ru="Официальный Имитационный Портал Союза">The Union's Official Mock Portal</p>
+                </div>
+            </a>
+
+            <!-- Right: Contact, Language toggle, Search -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
+                <div class="text-center sm:text-right text-xs bg-red-50 p-3 rounded-lg border border-red-100 flex items-center space-x-3 shadow-sm w-full sm:w-auto">
+                    <div class="bg-soviet-red text-white p-2 rounded-full flex items-center justify-center w-8 h-8">
+                        <i class="fa-solid fa-headset text-sm"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="font-bold text-gray-700" data-en="Need Assistance?" data-ru="Нужна Помощь?">Need Assistance?</p>
+                        <p class="text-soviet-red font-semibold cursor-pointer hover:underline" onclick="triggerSovietAlert('Support Ticket Bureau', 'To ask questions or report concerns, please head to the Discord Server and locate the #support channel to create an official Citizen Ticket.')" data-en="Create a ticket in the server" data-ru="Создайте тикет на сервере">Create a ticket in the server</p>
+                    </div>
+                </div>
+
+                <button id="langBtn" onclick="toggleLanguage()" class="bg-soviet-darkBlue hover:bg-gray-800 text-white font-bold py-2 px-4 rounded text-xs tracking-wider uppercase transition-all shadow-md border-b-2 border-soviet-gold flex items-center space-x-1">
+                    <i class="fas fa-globe"></i>
+                    <span>Русский</span>
+                </button>
+
+                <div class="relative w-full sm:w-64">
+                    <input id="search-input" type="text" placeholder="Search USSR.gov..." class="w-full pl-3 pr-10 py-2 border-2 border-gray-300 rounded focus:outline-none focus:border-soviet-red text-sm transition-all shadow-inner" onkeypress="handleSearch(event)">
+                    <button onclick="performSearch()" class="absolute right-0 top-0 h-full px-3 text-white bg-soviet-red hover:bg-soviet-redHover rounded-r transition-all">
+                        <i class="fas fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-soviet-red text-white shadow-md relative z-10">
+        <div class="max-w-7xl mx-auto overflow-x-auto scrollbar-hide">
+            <ul class="flex whitespace-nowrap text-sm font-semibold border-t border-red-700">
+                <li>
+                    <a href="/main/" class="inline-block py-4 px-5 hover:bg-soviet-redHover border-r border-red-800 transition-all" data-en="Home" data-ru="Главная">Home</a>
+                </li>
+                <li>
+                    <a href="/the-union-and-its-government/" class="inline-block py-4 px-5 hover:bg-soviet-redHover border-r border-red-800 transition-all" data-en="The Union and its government" data-ru="Союз и его правительство">The Union and its government</a>
+                </li>
+                <!-- Active Link -->
+                <li>
+                    <a href="/state-benefits/" onclick="window.location.reload(); return false;" class="inline-block py-4 px-5 bg-soviet-redHover border-r border-red-800 transition-all text-soviet-gold font-bold border-b-4 border-soviet-gold cursor-pointer" data-en="State benefits" data-ru="Государственные пособия">State benefits</a>
+                </li>
+                <li>
+                    <a href="#" onclick="triggerSovietAlert('Soviet Citizenship', 'Register yourself as a registered worker of the state, undergo party review, and check naturalization status.')" class="inline-block py-4 px-5 hover:bg-soviet-redHover border-r border-red-800 transition-all" data-en="Immigration and Soviet citizenship" data-ru="Иммиграция и гражданство СССР">Immigration and Soviet citizenship</a>
+                </li>
+                <li>
+                    <a href="#" onclick="triggerSovietAlert('Economy & Rubles', 'Track industrial indices, agricultural yields, and collective commerce data under the state planning committee (Gosplan).')" class="inline-block py-4 px-5 hover:bg-soviet-redHover border-r border-red-800 transition-all" data-en="Economy and Rubles" data-ru="Экономика и Рубли">Economy and Rubles</a>
+                </li>
+                <li>
+                    <a href="#" onclick="triggerSovietAlert('Labor Registry', 'Every citizen has the right and duty to perform collective labor. Explore state industries.')" class="inline-block py-4 px-5 hover:bg-soviet-redHover border-r border-red-800 transition-all" data-en="Labor" data-ru="Труд">Labor</a>
+                </li>
+                <li>
+                    <a href="#" onclick="triggerSovietAlert('Internal Permits', 'Apply for exit visas, regional passes, and capital-city residence permissions.')" class="inline-block py-4 px-5 hover:bg-soviet-redHover transition-all" data-en="Travel" data-ru="Поездки">Travel</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumbs -->
+    <div class="bg-gray-100 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 py-2 text-xs text-gray-500">
+            <a href="/main/" class="hover:text-soviet-red hover:underline" data-en="Home" data-ru="Главная">Home</a> 
+            <span class="mx-2">›</span>
+            <span class="text-gray-800 font-semibold" data-en="State benefits" data-ru="Государственные пособия">State benefits</span>
+        </div>
+    </div>
+
+    <!-- Page Header (Sub-Hero) -->
+    <section class="bg-soviet-darkBlue border-b-4 border-soviet-gold py-12 px-4 md:px-8 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#D4AF37 1px, transparent 1px); background-size: 20px 20px;"></div>
+        <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-8">
+            <div class="flex-grow">
+                <span class="inline-block bg-soviet-red text-soviet-gold text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider mb-3" data-en="Social Security Bureau" data-ru="Бюро Социального Обеспечения">Social Security Bureau</span>
+                <h1 class="font-serif text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight" data-en="State Benefits & Social Guarantees" data-ru="Государственные Пособия и Социальные Гарантии">
+                    State Benefits & Social Guarantees
+                </h1>
+                <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-3xl" data-en="Under Article 40-45 of the USSR Constitution, all Soviet citizens possess guaranteed rights to communal housing, universal health protection, old-age pensions, free education, and state allocation vouchers." data-ru="Согласно статьям 40-45 Конституции СССР, все советские граждане имеют гарантированные права на коммунальное жилье, всеобщее здравоохранение, пенсии по старости, бесплатное образование и государственные путевки.">
+                    Under Article 40-45 of the USSR Constitution, all Soviet citizens possess guaranteed rights to communal housing, universal health protection, old-age pensions, free education, and state allocation vouchers.
+                </p>
+            </div>
+            <div class="hidden md:block flex-shrink-0 opacity-80">
+                <i class="fas fa-hand-holding-heart text-8xl text-soviet-gold border-4 border-soviet-gold rounded-full p-6 bg-white/5"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 md:px-8 py-12 flex-grow w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Left Column: Detailed Benefit Categories -->
+            <div class="lg:col-span-2 space-y-10">
+                
+                <!-- Category 1: Housing & Accommodation -->
+                <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-200 relative">
+                    <div class="absolute top-0 right-0 bg-red-50 text-soviet-red font-bold text-[10px] px-3 py-1 rounded-bl-xl uppercase tracking-widest border-b border-l border-red-100" data-en="Housing Quotas" data-ru="Жилищные Квоты">Housing Quotas</div>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="bg-soviet-red text-white p-3 rounded-lg shadow-inner">
+                            <i class="fas fa-house-chimney text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-serif text-2xl font-bold text-gray-900" data-en="Communal Housing & Apartment Allocations" data-ru="Коммунальное Жилье и Выдача Квартир">Communal Housing & Apartment Allocations</h2>
+                            <p class="text-xs text-gray-500 font-medium" data-en="Ministry of Municipal Economy & Civil Welfare" data-ru="Министерство Коммунального Хозяйства">Ministry of Municipal Economy & Civil Welfare</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-4" data-en="Housing in the Soviet Union is guaranteed by the state without mortgage debt. Registered workers receive subsidized apartments or room shares based on family size, seniority credits, and regional propiska residency registrations." data-ru="Жилье в Советском Союзе гарантируется государством без ипотечных долгов. Зарегистрированные трудящиеся получают субсидированные квартиры или комнаты в зависимости от состава семьи, трудового стажа и прописки.">
+                        Housing in the Soviet Union is guaranteed by the state without mortgage debt. Registered workers receive subsidized apartments or room shares based on family size, seniority credits, and regional propiska residency registrations.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                        <div class="bg-gray-50 p-4 border border-gray-200 rounded-lg">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="font-bold text-sm text-soviet-red" data-en="Standard Apartment Voucher" data-ru="Ордер на Квартиру">Standard Apartment Voucher</h3>
+                                <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded" data-en="Guaranteed" data-ru="Гарантировано">Guaranteed</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed" data-en="Assigned to multi-person families according to sanitary norms (9m² per person). Minimal rent (under 3% of monthly income)." data-ru="Выдается семьям согласно санитарным нормам (9м² на человека). Минимальная плата (менее 3% дохода).">Assigned to multi-person families according to sanitary norms (9m² per person). Minimal rent (under 3% of monthly income).</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 border border-gray-200 rounded-lg">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="font-bold text-sm text-soviet-red" data-en="Priority Worker Queue" data-ru="Очередь Ударников">Priority Worker Queue</h3>
+                                <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded" data-en="Stakhanovite Rank" data-ru="Стахановец">Stakhanovite Rank</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed" data-en="Industrial innovators, union delegates, and heroic workers skip standard queue waiting periods for newly built block apartments." data-ru="Передовики производства и заслуженные рабочие получают квартиры в новостройках во внеочередном порядке.">Industrial innovators, union delegates, and heroic workers skip standard queue waiting periods for newly built block apartments.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Category 2: Food & Provisions -->
+                <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-200 relative">
+                    <div class="absolute top-0 right-0 bg-amber-50 text-amber-800 font-bold text-[10px] px-3 py-1 rounded-bl-xl uppercase tracking-widest border-b border-l border-amber-100" data-en="Gosplan Supplies" data-ru="Снабжение Госплана">Gosplan Supplies</div>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="bg-amber-600 text-white p-3 rounded-lg shadow-inner">
+                            <i class="fas fa-wheat-awn text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-serif text-2xl font-bold text-gray-900" data-en="Food Provisions & Staple Ration Coupons" data-ru="Продовольственное Снабжение и Талоны">Food Provisions & Staple Ration Coupons</h2>
+                            <p class="text-xs text-gray-500 font-medium" data-en="State Committee for Supplies & Domestic Commerce" data-ru="Государственный Комитет по Снабжению">State Committee for Supplies & Domestic Commerce</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-4" data-en="Essential food staples—including bread, dairy, meat, and seasonal produce—are strictly price-controlled by the state to shield citizens from market speculation. Specialized coupon registers ensure equitable distribution across all Soviet republics." data-ru="Основные продукты питания — хлеб, молочные продукты, мясо и сезонные овощи — строго контролируются по ценам государством. Специальные учетные книги гарантируют справедливое распределение во всех союзных республиках.">
+                        Essential food staples—including bread, dairy, meat, and seasonal produce—are strictly price-controlled by the state to shield citizens from market speculation. Specialized coupon registers ensure equitable distribution across all Soviet republics.
+                    </p>
+                    
+                    <div class="space-y-3 mt-4">
+                        <div class="flex items-start space-x-3 p-3 bg-red-50/60 rounded-lg border border-red-100">
+                            <i class="fas fa-certificate text-soviet-red mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-xs text-gray-800" data-en="Fixed Price Guarantee" data-ru="Фиксированные Государственные Цены">Fixed Price Guarantee</h4>
+                                <p class="text-xs text-gray-600 mt-0.5" data-en="Basic wheat bread and milk prices remain pegged to official Gosplan indices regardless of global inflation." data-ru="Цены на формовой хлеб и молоко остаются фиксированными по индексам Госплана независимо от внешних факторов.">Basic wheat bread and milk prices remain pegged to official Gosplan indices regardless of global inflation.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 bg-yellow-50/60 rounded-lg border border-yellow-100">
+                            <i class="fas fa-store text-amber-700 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-xs text-gray-800" data-en="Trade Union Store Allocations" data-ru="Профсоюзное Распределение">Trade Union Store Allocations</h4>
+                                <p class="text-xs text-gray-600 mt-0.5" data-en="Factory workers receive seasonal fruit crates, tea allowances, and holiday hamper passes directly through local Soviet syndicates." data-ru="Заводские рабочие получают наборы сезонных фруктов, чайные пайки и праздничные заказы через профкомы.">Factory workers receive seasonal fruit crates, tea allowances, and holiday hamper passes directly through local Soviet syndicates.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Category 3: Pensions & Seniority -->
+                <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-200 relative">
+                    <div class="absolute top-0 right-0 bg-blue-50 text-blue-800 font-bold text-[10px] px-3 py-1 rounded-bl-xl uppercase tracking-widest border-b border-l border-blue-100" data-en="Pension Security" data-ru="Пенсионный Фонд">Pension Security</div>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="bg-soviet-darkBlue text-white p-3 rounded-lg shadow-inner">
+                            <i class="fas fa-award text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-serif text-2xl font-bold text-gray-900" data-en="Retirement Pensions & Invalidity Protection" data-ru="Пенсии по Старости и Инвалидности">Retirement Pensions & Invalidity Protection</h2>
+                            <p class="text-xs text-gray-500 font-medium" data-en="State Board of Social Maintenance" data-ru="Государственное Управление Социального Обеспечения">State Board of Social Maintenance</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-4" data-en="Retirement age in the USSR is among the lowest globally (age 60 for men, 55 for women, with earlier retirement for heavy industrial laborers). Pensions are calculated directly from highest-earning labor years without required private savings." data-ru="Пенсионный возраст в СССР — один из самых низких в мире (60 лет для мужчин, 55 для женщин, с досрочным выходом для тяжелых производств). Размер пенсии рассчитывается из лучших лет стажа без необходимости частных накоплений.">
+                        Retirement age in the USSR is among the lowest globally (age 60 for men, 55 for women, with earlier retirement for heavy industrial laborers). Pensions are calculated directly from highest-earning labor years without required private savings.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center mt-6">
+                        <div class="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                            <span class="block font-bold text-2xl text-soviet-red">60 / 55</span>
+                            <span class="text-[11px] text-gray-600 font-medium" data-en="Retirement Age (M / F)" data-ru="Пенсионный Возраст (М / Ж)">Retirement Age (M / F)</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                            <span class="block font-bold text-2xl text-soviet-gold">100%</span>
+                            <span class="text-[11px] text-gray-600 font-medium" data-en="State Health Coverage" data-ru="Покрытие Медицины">State Health Coverage</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                            <span class="block font-bold text-2xl text-indigo-700">120 Rubles</span>
+                            <span class="text-[11px] text-gray-600 font-medium" data-en="Avg Basic Monthly Grant" data-ru="Средняя Базовая Пенсия">Avg Basic Monthly Grant</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Category 4: Health & Sanatorium Vouchers -->
+                <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-200 relative">
+                    <div class="absolute top-0 right-0 bg-emerald-50 text-emerald-800 font-bold text-[10px] px-3 py-1 rounded-bl-xl uppercase tracking-widest border-b border-l border-emerald-100" data-en="Rest & Health" data-ru="Отдых и Здоровье">Rest & Health</div>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="bg-emerald-700 text-white p-3 rounded-lg shadow-inner">
+                            <i class="fas fa-spa text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-serif text-2xl font-bold text-gray-900" data-en="Sanatorium Permits & Free Healthcare" data-ru="Санаторные Путевки и Бесплатная Медицина">Sanatorium Permits & Free Healthcare</h2>
+                            <p class="text-xs text-gray-500 font-medium" data-en="Ministry of Health & All-Union Central Council of Trade Unions" data-ru="Министерство Здравоохранения СССР">Ministry of Health & All-Union Central Council of Trade Unions</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-4" data-en="Every worker is entitled to paid annual vacation combined with heavily subsidized trade-union sanatorium vouchers (Putyovka) at Crimean resorts, mineral spas, and Black Sea health complexes." data-ru="Каждый трудящийся имеет право на оплачиваемый ежегодный отпуск в сочетании с субсидируемыми профсоюзными путевками в санатории Крыма, минеральные спа и здравницы Черного моря.">
+                        Every worker is entitled to paid annual vacation combined with heavily subsidized trade-union sanatorium vouchers (Putyovka) at Crimean resorts, mineral spas, and Black Sea health complexes.
+                    </p>
+
+                    <div class="flex items-center justify-between p-4 bg-emerald-50 rounded-lg border border-emerald-100">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-umbrella-beach text-emerald-700 text-2xl"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-gray-800" data-en="Apply for a Resort Sanatorium Voucher" data-ru="Заявка на Санаторную Путевку">Apply for a Resort Sanatorium Voucher</h4>
+                                <p class="text-xs text-gray-600" data-en="Submit your union card number in our Discord ticketing office." data-ru="Укажите номер профсоюзного билета в тикете на сервере.">Submit your union card number in our Discord ticketing office.</p>
+                            </div>
+                        </div>
+                        <button onclick="triggerSovietAlert('Sanatorium Voucher Bureau', 'Please open a support ticket on our Discord server to request a trade-union Sanatorium pass!')" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-4 rounded text-xs uppercase tracking-wider transition-all">
+                            <span data-en="Request Pass" data-ru="Запросить">Request Pass</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Interactive Benefit Calculator Widget -->
+                <section class="bg-gradient-to-r from-soviet-darkBlue to-red-950 p-8 rounded-xl text-white shadow-lg border-2 border-soviet-gold">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas fa-calculator text-soviet-gold text-2xl"></i>
+                        <h2 class="font-serif text-2xl font-bold" data-en="Citizen Benefit & Ruble Estimator" data-ru="Калькулятор Пособий Гражданина">Citizen Benefit & Ruble Estimator</h2>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed mb-6" data-en="Select your labor category and years of service to estimate your monthly Soviet social security credits and voucher eligibility." data-ru="Выберите категорию труда и стаж для расчета месячных социальных выплат и права на путевки.">
+                        Select your labor category and years of service to estimate your monthly Soviet social security credits and voucher eligibility.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div>
+                            <label class="block text-xs font-bold text-soviet-gold uppercase mb-1" data-en="Labor Classification" data-ru="Классификация Труда">Labor Classification</label>
+                            <select id="calc-rank" class="w-full bg-gray-900 border border-gray-700 rounded p-2 text-xs text-white focus:outline-none focus:border-soviet-gold">
+                                <option value="120">Industrial Heavy Worker / Miner (120 Rubles/mo base)</option>
+                                <option value="95">Agricultural Collective Farmer (95 Rubles/mo base)</option>
+                                <option value="110">State Academic / Specialist (110 Rubles/mo base)</option>
+                                <option value="150">Stakhanovite / Labor Hero (150 Rubles/mo base)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-soviet-gold uppercase mb-1" data-en="Years of Collective Labor" data-ru="Трудовой Стаж (Лет)">Years of Collective Labor</label>
+                            <input id="calc-years" type="number" min="1" max="50" value="15" class="w-full bg-gray-900 border border-gray-700 rounded p-2 text-xs text-white focus:outline-none focus:border-soviet-gold">
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-black/40 rounded-lg border border-yellow-600/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <span class="text-[11px] uppercase tracking-wider text-gray-400 block" data-en="Estimated Monthly Benefit" data-ru="Расчетное Месячное Пособие">Estimated Monthly Benefit</span>
+                            <span id="calc-result" class="font-serif text-3xl font-extrabold text-soviet-gold">142.50 Rubles</span>
+                        </div>
+                        <button onclick="calculateBenefit()" class="bg-soviet-red hover:bg-soviet-redHover text-white font-bold py-2.5 px-5 rounded text-xs uppercase tracking-wider transition-all border border-soviet-gold">
+                            <span data-en="Calculate Credits" data-ru="Рассчитать">Calculate Credits</span>
+                        </button>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Right Column: Sidebar -->
+            <div class="space-y-8">
+                
+                <!-- Discord Apply Ticket Box -->
+                <div class="bg-gradient-to-b from-indigo-900 to-soviet-darkBlue p-6 rounded-xl border-2 border-indigo-500 shadow-xl text-white">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <i class="fa-brands fa-discord text-2xl text-indigo-400"></i>
+                        <h3 class="font-bold text-base" data-en="Apply for Social Benefits" data-ru="Подача Заявки на Пособия">Apply for Social Benefits</h3>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed mb-4" data-en="To file a benefit claim, housing transfer, or passport voucher in our simulation, open a ticket on our Discord server." data-ru="Чтобы подать заявку на получение пособия, ордера на жилье или паспорта в симуляции, откройте тикет на сервере.">
+                        To file a benefit claim, housing transfer, or passport voucher in our simulation, open a ticket on our Discord server.
+                    </p>
+                    <a href="https://discord.gg/XUcX9tgc5u" target="_blank" rel="noopener noreferrer" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg text-xs uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-md hover:shadow-indigo-500/30 cursor-pointer">
+                        <i class="fa-brands fa-discord text-base"></i>
+                        <span data-en="Join & Create Ticket" data-ru="Создать Тикет в Discord">Join & Create Ticket</span>
+                    </a>
+                </div>
+
+                <!-- State Allocation Quotas Table -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                    <h3 class="font-serif text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200 flex items-center justify-between">
+                        <span data-en="Current Gosplan Quotas" data-ru="Текущие Квоты Госплана">Current Gosplan Quotas</span>
+                        <i class="fas fa-chart-pie text-soviet-red text-sm"></i>
+                    </h3>
+                    <div class="space-y-3 text-xs">
+                        <div class="flex items-center justify-between py-1.5 border-b border-gray-100">
+                            <span class="text-gray-600" data-en="Housing Units Allocated" data-ru="Выделено Квартир">Housing Units Allocated</span>
+                            <span class="font-bold text-soviet-red">14,280</span>
+                        </div>
+                        <div class="flex items-center justify-between py-1.5 border-b border-gray-100">
+                            <span class="text-gray-600" data-en="Black Sea Sanatorium Passes" data-ru="Путевки в Санатории">Black Sea Sanatorium Passes</span>
+                            <span class="font-bold text-emerald-700">8,950</span>
+                        </div>
+                        <div class="flex items-center justify-between py-1.5 border-b border-gray-100">
+                            <span class="text-gray-600" data-en="Pioneer Camp Vouchers" data-ru="Путевки в Пионерлагеря">Pioneer Camp Vouchers</span>
+                            <span class="font-bold text-blue-700">12,100</span>
+                        </div>
+                        <div class="flex items-center justify-between py-1.5">
+                            <span class="text-gray-600" data-en="Disability & Pension Index" data-ru="Индекс Пенсионного Фонда">Disability & Pension Index</span>
+                            <span class="font-bold text-soviet-gold bg-soviet-darkBlue px-2 py-0.5 rounded text-[10px]">100% Guaranteed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                    <h3 class="font-serif text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200 flex items-center space-x-2">
+                        <i class="fas fa-circle-question text-soviet-red"></i>
+                        <span data-en="Citizen FAQ" data-ru="Частые Вопросы">Citizen FAQ</span>
+                    </h3>
+                    
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                            <h4 class="font-bold text-gray-800 mb-1" data-en="How do I register for a propiska?" data-ru="Как оформить прописку?">How do I register for a propiska?</h4>
+                            <p class="text-gray-600 leading-relaxed" data-en="Propiska residence registrations are issued by local Soviet militia offices on Discord after citizen verification." data-ru="Прописка оформляется в отделениях советской милиции на сервере после проверки.">Propiska residence registrations are issued by local Soviet militia offices on Discord after citizen verification.</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                            <h4 class="font-bold text-gray-800 mb-1" data-en="Are healthcare services completely free?" data-ru="Бесплатна ли медицина?">Are healthcare services completely free?</h4>
+                            <p class="text-gray-600 leading-relaxed" data-en="Yes. Under Soviet constitutional law, medical treatment and emergency care require zero out-of-pocket payment." data-ru="Да. По советской конституции медицинская помощь предоставляется бесплатно.">Yes. Under Soviet constitutional law, medical treatment and emergency care require zero out-of-pocket payment.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-soviet-darkBlue text-gray-400 text-xs py-12 px-4 md:px-8 border-t-4 border-soviet-red mt-auto">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+                <div class="flex items-center space-x-2 mb-3">
+                    <span class="font-serif text-2xl font-bold text-soviet-red">ussr</span>
+                    <span class="font-sans text-2xl font-light text-white">.gov</span>
+                </div>
+                <p class="text-gray-400 text-xs leading-relaxed" data-en="The central online gateway for the Union of Soviet Socialist Republics Discord Mock Government project." data-ru="Центральный онлайн-портал проекта Имитационного Правительства СССР в Discord.">
+                    The central online gateway for the Union of Soviet Socialist Republics Discord Mock Government project.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white text-sm mb-3 uppercase tracking-wider" data-en="State Ministries" data-ru="Государственные Министерства">State Ministries</h4>
+                <ul class="space-y-2">
+                    <li><a href="/the-union-and-its-government/" class="hover:text-soviet-gold transition-colors" data-en="Council of Ministers" data-ru="Совет Министров">Council of Ministers</a></li>
+                    <li><a href="/state-benefits/" class="hover:text-soviet-gold transition-colors" data-en="Social Security & Housing" data-ru="Социальное Обеспечение">Social Security & Housing</a></li>
+                    <li><a href="#" onclick="triggerSovietAlert('Gosplan', 'State Planning Committee rules all production quotas.')" class="hover:text-soviet-gold transition-colors" data-en="Gosplan Commerce" data-ru="Госплан">Gosplan Commerce</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white text-sm mb-3 uppercase tracking-wider" data-en="Citizen Directives" data-ru="Директивы Граждан">Citizen Directives</h4>
+                <ul class="space-y-2">
+                    <li><a href="https://discord.gg/XUcX9tgc5u" target="_blank" class="hover:text-soviet-gold transition-colors" data-en="Discord Ticket Bureau" data-ru="Бюро Тикетов Discord">Discord Ticket Bureau</a></li>
+                    <li><a href="#" onclick="triggerSovietAlert('Labor Code', 'Article 12: Work in the USSR is a duty and a matter of honor for every able-bodied citizen.')" class="hover:text-soviet-gold transition-colors" data-en="Labor Code Rights" data-ru="Кодекс Законов о Труде">Labor Code Rights</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white text-sm mb-3 uppercase tracking-wider" data-en="Project Notice" data-ru="Уведомление О Проекте">Project Notice</h4>
+                <p class="text-gray-400 text-[11px] leading-relaxed" data-en="This is a fictional mock-government website built for roleplay and educational entertainment on Discord. Not affiliated with any real-world sovereign government." data-ru="Это вымышленный сайт имитационного правительства, созданный для ролевых игр и развлечения в Discord. Не связан с реальными государствами.">
+                    This is a fictional mock-government website built for roleplay and educational entertainment on Discord. Not affiliated with any real-world sovereign government.
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-6 border-t border-gray-800 text-center text-gray-500 text-[11px]">
+            &copy; USSR.gov Discord Mock Government • <span data-en="All Rights Reserved to the Workers" data-ru="Все Права Принадлежат Трудящимся">All Rights Reserved to the Workers</span>
+        </div>
+    </footer>
+
+    <!-- Red & Gold Notification Modal -->
+    <div id="soviet-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div id="modal-card" class="bg-white rounded-xl shadow-2xl border-2 border-soviet-gold max-w-md w-full overflow-hidden transform scale-95 transition-transform duration-300">
+            <div class="bg-soviet-red text-white p-4 flex items-center justify-between border-b-2 border-soviet-gold">
+                <div class="flex items-center space-x-2">
+                    <span class="text-soviet-gold text-xl">☭</span>
+                    <h3 id="modal-title" class="font-serif font-bold text-lg text-soviet-gold">State Notice</h3>
+                </div>
+                <button onclick="closeSovietAlert()" class="text-white hover:text-soviet-gold text-xl font-bold focus:outline-none">&times;</button>
+            </div>
+            <div class="p-6">
+                <p id="modal-message" class="text-gray-700 text-sm leading-relaxed text-center font-medium">
+                    Please await assignment, Comrade.
+                </p>
+                <div class="mt-4 p-3 bg-red-50 rounded-lg border border-red-100 text-[11px] text-gray-500 text-center leading-relaxed">
+                    <span class="font-bold text-soviet-red uppercase" data-en="Notice:" data-ru="Уведомление:">Notice:</span> 
+                    <span data-en="For official benefit registration, please open a support ticket on our Discord server." data-ru="Для оформления пособий откройте тикет на сервере Discord.">For official benefit registration, please open a support ticket on our Discord server.</span>
+                </div>
+            </div>
+            <div class="bg-gray-100 px-6 py-4 flex flex-col sm:flex-row items-center justify-center gap-2">
+                <button onclick="closeSovietAlert()" class="w-full sm:w-auto bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded text-xs uppercase tracking-wider transition-all">
+                    Acknowledged
+                </button>
+                <a href="https://discord.gg/XUcX9tgc5u" target="_blank" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-xs uppercase tracking-wider transition-all flex items-center justify-center space-x-1">
+                    <i class="fa-brands fa-discord"></i>
+                    <span data-en="Open Support Ticket" data-ru="Открыть Тикет">Open Support Ticket</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        let currentLang = 'en';
+
+        function toggleHowToKnow() {
+            const box = document.getElementById('how-to-know-box');
+            const chevron = document.getElementById('chevron-how');
+            if (box.classList.contains('hidden')) {
+                box.classList.remove('hidden');
+                chevron.classList.add('rotate-180');
+            } else {
+                box.classList.add('hidden');
+                chevron.classList.remove('rotate-180');
+            }
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ru' : 'en';
+            const langBtnSpan = document.querySelector('#langBtn span');
+            langBtnSpan.textContent = currentLang === 'en' ? 'Русский' : 'English';
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const enText = el.getAttribute('data-en');
+                const ruText = el.getAttribute('data-ru');
+                el.textContent = currentLang === 'en' ? enText : ruText;
+            });
+
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.placeholder = currentLang === 'en' ? 'Search USSR.gov...' : 'Поиск по сайту СССР.gov...';
+            }
+        }
+
+        function triggerSovietAlert(title, message) {
+            const modal = document.getElementById('soviet-modal');
+            const card = document.getElementById('modal-card');
+            const titleEl = document.getElementById('modal-title');
+            const messageEl = document.getElementById('modal-message');
+
+            titleEl.textContent = title;
+            messageEl.textContent = message;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeSovietAlert() {
+            const modal = document.getElementById('soviet-modal');
+            const card = document.getElementById('modal-card');
+
+            modal.classList.add('opacity-0');
+            card.classList.add('scale-95');
+            card.classList.remove('scale-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        document.getElementById('soviet-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSovietAlert();
+            }
+        });
+
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        }
+
+        function performSearch() {
+            const query = document.getElementById('search-input').value.trim();
+            if (query === "") {
+                triggerSovietAlert(
+                    currentLang === 'en' ? 'Search Bureau' : 'Бюро поисковых запросов', 
+                    currentLang === 'en' ? 'Please enter a search query before submitting.' : 'Пожалуйста, введите запрос перед отправкой.'
+                );
+            } else {
+                triggerSovietAlert(
+                    currentLang === 'en' ? 'Search Result' : 'Результаты поиска', 
+                    currentLang === 'en' ? `No registered matches were found for "${query}" in our benefit archives. Try asking in #support on Discord.` : `Не найдено совпадений по запросу "${query}" в архивах социальной помощи.`
+                );
+            }
+        }
+
+        function calculateBenefit() {
+            const base = parseFloat(document.getElementById('calc-rank').value) || 100;
+            const years = parseInt(document.getElementById('calc-years').value) || 1;
+            const total = base * (1 + (years * 0.025));
+            document.getElementById('calc-result').textContent = total.toFixed(2) + " Rubles";
+        }
+    </script>
+</body>
+</html>
